@@ -1,0 +1,42 @@
+#!/usr/bin/expect -f
+
+set internal [lindex $argv 0];
+set username [lindex $argv 1];
+set password [lindex $argv 2];
+
+if { $internal == "state" } {
+    puts "Checking VPN state"
+    spawn /opt/cisco/anyconnect/bin/vpn state
+    expect {
+        "  >> state: Disconnected"    { 
+                                          puts "VPN is disconnected"
+                                          exit 1
+                                      }
+        "  >> state: Connected"       { 
+                                          puts "VPN is connected"
+                                          exit 0
+                                      }
+    }
+    exit 2
+}
+
+if { $internal != "0" && $internal != "1" } {
+
+    puts "Disconnecting from VPN"
+    spawn /opt/cisco/anyconnect/bin/vpn disconnect
+    expect "^  >> state: Disconnected"
+
+} else {
+
+    puts "Connecting to VPN"
+    spawn /opt/cisco/anyconnect/bin/vpn connect https://yourvpn.com/
+    expect "^Group:"
+    send "$internal\r"
+    expect "^Username:"
+    send "$username\r"
+    expect "^Password:"
+    send "$password\r"
+    expect "^  >> state: Connected"
+
+}
+
