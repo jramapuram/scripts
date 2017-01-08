@@ -161,16 +161,19 @@ bindsym XF86MonBrightnessUp exec xbacklight -inc 5 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 5 # decrease screen brightness
 
 # scrot screenshotting
-#bindsym $mod+Shift+p exec "scrot -s -u ~/Dropbox/Screenshots/Screenshot %Y-%m-%d %H.%M.%S.png"
-#bindsym Print exec scrot -s -e 'mv $f /tmp/ && gimp /tmp/$f' #exec "scrot -s -e 'mv $f ~/Dropbox/Screenshots/$f'"
 bindsym --release Print exec scrot -s -e 'mv $f ~/Dropbox/Screenshots/$f && dropbox sharelink ~/Dropbox/Screenshots/$f | xclip -selection c'
-#bindsym  exec scrot -s -e 'mv $f /tmp/ && gimp /tmp/$f' --release
 
 # Media player controls
 bindsym XF86AudioPlay exec playerctl play
 bindsym XF86AudioPause exec playerctl pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
+
+# power controls
+bindsym $mod+Shift+BackSpace exec xset dpms force off
+
+# emacs
+bindsym $mod+Ctrl+e exec emacs
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -205,13 +208,11 @@ bar {
 }
 
 # Run stuff here
-#exec nohup /opt/cxoffice/bin/wine ~/.wine/drive_c/Program\ Files\ \(x86\)/1Password\ 4/Agile1pAgent.exez > /dev/null &
 #exec feh --bg-scale ~/Pictures/portal.png
 exec --no-startup-id xmodmap ~/.xmodmap
 exec --no-startup-id sh ~/.fehbg
 exec --no-startup-id nm-applet
 exec --no-startup-id /opt/cxoffice/bin/wine --bottle "1password" --cx-app Agile1pAgent.exe
 exec --no-startup-id dropbox start
-#exec --no-startup-id blueberry-tray
 exec --no-startup-id blueman-applet
 #exec --no-startup-id /usr/bin/steam -silent %U

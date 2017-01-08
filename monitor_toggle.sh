@@ -14,19 +14,19 @@ fi
 
 if [ $monitor_mode = "all" ]; then
     monitor_mode="EXTERNAL"
-    #sudo tee <<< ON /proc/acpi/bbswitch
     xrandr --output $INTERNAL_OUTPUT --off --output $EXTERNAL_OUTPUT --auto
+    xset -dpms
 elif [ $monitor_mode = "EXTERNAL" ]; then
     monitor_mode="INTERNAL"
-    #sudo tee <<< OFF /proc/acpi/bbswitch
     xrandr --output $INTERNAL_OUTPUT --auto --output $EXTERNAL_OUTPUT --off
+    xset dpms 60
 elif [ $monitor_mode = "INTERNAL" ]; then
     monitor_mode="CLONES"
-    #sudo tee <<< ON /proc/acpi/bbswitch
     xrandr --output $INTERNAL_OUTPUT --auto --output $EXTERNAL_OUTPUT --auto --same-as $INTERNAL_OUTPUT
+    xset -dpms
 else
     monitor_mode="all"
-    #sudo tee <<< ON /proc/acpi/bbswitch
     xrandr --output $INTERNAL_OUTPUT --auto --output $EXTERNAL_OUTPUT --auto --left-of $INTERNAL_OUTPUT
+    xset -dpms
 fi
 echo "${monitor_mode}" > /tmp/monitor_mode.dat
