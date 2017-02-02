@@ -1,0 +1,14 @@
+[Unit]
+Description=Reset keyboard modmap on resume
+After=suspend.target
+After=hibernate.target
+After=hybrid-sleep.target
+
+[Service]
+ExecStart=/usr/lib/pm-utils/sleep.d/100keyboard_modmap
+
+[Install]
+WantedBy=suspend.target
+WantedBy=hibernate.target
+WantedBy=hybrid-sleep.target
+

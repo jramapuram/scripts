@@ -1,0 +1,17 @@
+[Unit]
+Description=i3lock on resume
+Before=suspend.target
+Before=hibernate.target
+Before=hybrid-sleep.target
+
+[Service]
+User=jramapuram
+Type=forking
+Environment=DISPLAY=:0
+ExecStart=/usr/local/i3lock-blur/lock.sh
+
+[Install]
+WantedBy=suspend.target
+WantedBy=hibernate.target
+WantedBy=hybrid-sleep.target
+
