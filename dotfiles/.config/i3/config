@@ -41,9 +41,9 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+q kill
 
 # make window borderless
-new_window none#normal
-new_float normal
-hide_edge_borders both
+#new_window none#normal
+#new_float normal
+#hide_edge_borders both
 popup_during_fullscreen smart
 for_window [class="urxvt"] border pixel 1 # Make all urxvts use a 1-pixel border:
 
@@ -68,26 +68,29 @@ for_window [class="urxvt"] border pixel 1 # Make all urxvts use a 1-pixel border
 # for_window [class="Steam" title="^Screenshot Uploader$"] floating enable
 # for_window [class="Steam" title="^Steam Guard - Computer Authorization Required$"] floating enable
 # for_window [title="Steam Keyboard"] floating enable
+
+#for_window [class="Emacs24"] border none
 for_window [class="Steam"] floating enable
-for_window [class="Steam"] border normal
+for_window [class="Steam"] border none
+#for_window [class="Steam"] border normal
 for_window [class="Rhythmbox"] floating enable
-for_window [class="Rhythmbox"] border normal
+#for_window [class="Rhythmbox"] border normal
 for_window [class="vlc"] floating enable
-for_window [class="vlc"] border normal
+#for_window [class="vlc"] border normal
 for_window [class="Gnome-calendar"] floating enable
-for_window [class="Gnome-calendar"] border normal
+#for_window [class="Gnome-calendar"] border normal
 for_window [class="Crossover"] floating enable
-for_window [class="Crossover"] border normal
+#for_window [class="Crossover"] border normal
 for_window [class="Wine"] floating enable
-for_window [class="Wine"] border normal
+#for_window [class="Wine"] border normal
 for_window [class="EXCEL.EXE"] floating enable
-for_window [class="EXCEL.EXE"] border normal
+#for_window [class="EXCEL.EXE"] border normal
 for_window [class="WORD.EXE"] floating enable
-for_window [class="WORD.EXE"] border normal
+#for_window [class="WORD.EXE"] border normal
 for_window [class="Transmission-gtk"] floating enable
-for_window [class="Transmission-gtk"] border normal
+#for_window [class="Transmission-gtk"] border normal
 for_window [class="1Password.exe"] floating enable
-for_window [class="1Password.exe"] border normal
+#for_window [class="1Password.exe"] border normal
 for_window [class="^Steam.exe$" title="^Friends$"] floating enable
 for_window [class="^Steam.exe$" title="Steam - News"] floating enable
 for_window [class="^Steam.exe$" title=".* - Chat"] floating enable
@@ -98,9 +101,9 @@ for_window [class="^Steam.exe$" title="^Steam - Self Updater$"] floating enable
 for_window [class="^Steam.exe$" title="^Screenshot Uploader$"] floating enable
 for_window [class="^Steam.exe$" title="^Steam Guard - Computer Authorization Required$"] floating enable
 for_window [class="Gloobus-preview"] floating enable
-for_window [class="Gloobus-preview"] border normal
+#for_window [class="Gloobus-preview"] border normal
 for_window [class="Blueman-manager"] floating enable
-for_window [class="Blueman-manager"] border normal
+#for_window [class="Blueman-manager"] border normal
 # hangouts plugin
 for_window [class="Google-chrome"] border none
 for_window [class="Google-chrome"] floating disable
@@ -280,6 +283,7 @@ bar {
 #exec --no-startup-id xmodmap ~/.xmodmap
 #exec --no-startup-id xset dpms 60
 #exec_always --no-startup-id ~/scripts/monitor_toggle.sh
+exec --no-startup-id compton --config ~/.config/compton/compton.conf -b
 exec --no-startup-id ~/scripts/keyboard_modmap.sh
 exec --no-startup-id xautolock -time 15 -locker '/usr/local/i3lock-blur/lock.sh && sleep 30 && xset dpms force off'
 exec_always --no-startup-id sh ~/.fehbg
