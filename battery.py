@@ -36,15 +36,18 @@ else:
         timeleft = r.group(1)
         hour_or_min = "min" if r.group(2) == "minutes" else "hrs"
         fulltext = FA_BATTERY + " "
-    elif state == "fully-charged":
+    elif state == "fully":
         fulltext = FA_PLUG + " "
         hour_or_min = ""
+        timeleft = ""
     elif state == "charging":
         r = re.match( r'.* +time to full: +(\d+.*\d+) +(\w+)', status)
         timeleft = r.group(1)
         hour_or_min = "min" if r.group(2) == "minutes" else "hrs"
         fulltext = FA_LIGHTNING + " " + FA_PLUG + " "
     else:
+        hour_or_min = ""
+        timeleft = ""
         fulltext = FA_QUESTION + " " + FA_BATTERY + " "
 
     def color(percent):
