@@ -79,9 +79,9 @@ interval=10
 # Support multiple chips, though lm-sensors.
 # The script may be called with -w and -c switches to specify thresholds,
 # see the script for details.
-[temperature]
-label=CPU
-interval=10
+# [temperature]
+# label=CPU
+# interval=10
 
 # Key indicators
 #
@@ -147,10 +147,10 @@ interval=10
 #
 # The script may be called with -w and -c switches to specify thresholds,
 # see the script for details.
-[cpu_usage]
-label=CPU
-interval=10
-min_width=CPU: 100.00%
+# [cpu_usage]
+# label=CPU
+# interval=10
+# min_width=CPU: 100.00%
 #separator=false
 
 #[load_average]
