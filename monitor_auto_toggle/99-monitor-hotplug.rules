@@ -1,0 +1,1 @@
+ACTION=="change", KERNEL=="card0", SUBSYSTEM=="drm", RUN+="/usr/bin/systemctl start hot_plug.service"

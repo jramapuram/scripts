@@ -51,9 +51,9 @@ else:
         fulltext = FA_QUESTION + " " + FA_BATTERY + " "
 
     def color(percent):
-        if percent < 10:
-            # exit code 33 will turn background red
-            return "#FFFFFF"
+        # if percent < 10:
+        #     # exit code 33 will turn background red
+        #     return "#FFFFFF"
         if percent < 20:
             return "#FF3300"
         if percent < 30:
@@ -74,5 +74,6 @@ else:
     fulltext += form.format(color(percentleft), percentleft, timeleft, hour_or_min)
 
 print(fulltext)
-if percentleft < 10:
-    exit(33)
+print(fulltext)
+# if percentleft < 10:
+#     exit(33)
