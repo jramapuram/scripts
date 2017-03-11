@@ -284,7 +284,8 @@ bar {
 #exec --no-startup-id xset dpms 60
 #exec_always --no-startup-id ~/scripts/monitor_toggle.sh
 #exec --no-startup-id compton --config ~/.config/compton/compton.conf -b
-exec --no-startup-id compton --opengl --vsync opengl-swc --unredir-if-possible --paint-on-overlay -b
+#exec --no-startup-id compton --opengl --vsync opengl-swc --unredir-if-possible --paint-on-overlay -b
+exec --no-startup-id compton -cCGb --backend glx --vsync opengl -b
 #exec --no-startup-id compton --backend glx --unredir-if-possible --vsync opengl-swc -b
 exec --no-startup-id ~/scripts/keyboard_modmap.sh
 exec --no-startup-id xautolock -time 15 -locker '/usr/local/i3lock-blur/lock.sh && sleep 30 && xset dpms force off'
