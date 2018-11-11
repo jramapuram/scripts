@@ -1,0 +1,3 @@
+[submodule "optimus_toggle"]
+	path = optimus_toggle
+	url = git+ssh://git@github.com/jramapuram/optimus_toggle.git
